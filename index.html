@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rob's Golf Lessons | Elite Golf Instruction - Reno, Nevada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #1e3a5f;
+            --light-green: #2563eb;
+            --gold: #d4af37;
+            --dark-bg: #0f1419;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Mobile-First Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-bg));
+            color: var(--text-light);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--primary-green);
+            padding: 1rem;
+        }
+
+        .nav.active {
+            display: block;
+        }
+
+        .nav a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 95, 0.8), rgba(15, 20, 25, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231e3a5f" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            line-height: 1.2;
+        }
+
+        .hero-badge .large {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-location {
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark-bg);
+        }
+
+        .btn-primary:hover {
+            background: #c49b2e;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding: 2rem 1.5rem;
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--light-green);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 3rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-dark);
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .instructor-name {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .instructor-title {
+            color: var(--light-green);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .credentials {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .credentials h4 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .credentials ul {
+            list-style: none;
+        }
+
+        .credentials li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .credentials li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--light-green);
+            font-weight: bold;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light-bg);
+        }
+
+        .service-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--light-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Programs Section */
+        .programs {
+            background: white;
+        }
+
+        .program-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--gold);
+        }
+
+        .program-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--dark-bg);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-card h3 {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .program-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .program-features li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--light-green);
+            font-weight: bold;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--light-bg);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author {
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-location {
+            color: var(--text-dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Service Areas Section */
+        .service-areas {
+            background: white;
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .area-item {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .location-details {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .detail-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .detail-item h4 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-item p {
+            color: var(--text-dark);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--light-bg);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--light-green);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            background: var(--primary-green);
+            color: var(--text-light);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtitle {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-copy {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav {
+                display: flex;
+                position: static;
+                background: transparent;
+                padding: 0;
+                gap: 1rem;
+            }
+
+            .nav a {
+                border-bottom: none;
+                padding: 0.5rem 1rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: row;
+                max-width: none;
+                justify-content: center;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .areas-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .detail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .areas-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div>ROB'S GOLF</div>
+                <div class="logo-subtitle">Elite Golf Instruction</div>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <nav class="nav" id="nav">
+                <a href="#home">Home</a>
+                <a href="#instructor">Instructor</a>
+                <a href="#services">Services</a>
+                <a href="#programs">Programs</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-badge">
+            <div style="font-size: 0.6rem;">ESTD</div>
+            <div class="large">R</div>
+            <div style="font-size: 0.6rem;">2025</div>
+        </div>
+        <h1>Rob's Golf Lessons</h1>
+        <p class="hero-subtitle">Swing Better</p>
+        <p class="hero-location">Reno, Nevada & Surrounding Areas</p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Book Your Lesson</a>
+            <a href="#services" class="btn btn-secondary">View Services</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-number">35+</span>
+            <span class="stat-label">Years in Golf</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Students Coached</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Satisfaction Rate</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">7</span>
+            <span class="stat-label">Service Areas</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="instructor" class="about">
+        <div class="section-header">
+            <p style="color: var(--light-green); font-weight: 600; margin-bottom: 0.5rem;">Meet Your Coach</p>
+            <h2 class="section-title">Rob L Rossi</h2>
+        </div>
+
+        <div class="about-content">
+            <h3 class="instructor-name">Rob L Rossi</h3>
+            <p class="instructor-title">Head Golf Instructor</p>
+
+            <p class="about-text">
+                With 35 years immersed in the game of golf and over 15 years of dedicated instruction experience, 
+                Rob Rossi has established himself as Northern Nevada's premier golf coach. His innovative teaching 
+                methodology combines classical fundamentals with cutting-edge swing analysis technology to deliver 
+                measurable results for golfers at every level.
+            </p>
+
+            <p class="about-text">
+                Rob's passion for the game extends beyond technique—he believes in building complete golfers who 
+                understand course management, mental strategy, and the discipline required for continuous improvement. 
+                His students have gone on to win club championships, dramatically lower their handicaps, and simply 
+                discover a deeper love for the game.
+            </p>
+
+            <p class="about-text">
+                Based in Reno and serving the greater Northern Nevada region, Rob brings a personalized approach 
+                to every lesson, ensuring that each student receives instruction tailored to their unique swing 
+                characteristics and golfing goals.
+            </p>
+
+            <div class="credentials">
+                <h4>Credentials & Expertise</h4>
+                <ul>
+                    <li>35+ Years in the Game of Golf</li>
+                    <li>15+ Years Professional Instruction</li>
+                    <li>Video Swing Analysis Specialist</li>
+                    <li>Tournament Preparation Coaching</li>
+                    <li>Course Management Expert</li>
+                    <li>Short Game & Putting Specialist</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <p style="color: var(--light-green); font-weight: 600; margin-bottom: 0.5rem;">What We Offer</p>
+            <h2 class="section-title">Lesson Services</h2>
+            <p class="section-subtitle">
+                Professional instruction programs designed to elevate every aspect of your golf game, 
+                from fundamentals to advanced tournament preparation.
+            </p>
+        </div>
+
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Private Lessons</h3>
+                <p>
+                    One-on-one personalized instruction tailored to your specific needs. Includes comprehensive 
+                    swing analysis, customized drills, and detailed practice plans for accelerated improvement.
+                </p>
+                <div class="price">$85/hr</div>
+                <a href="#contact" class="btn btn-primary">Book Now</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Group Clinics</h3>
+                <p>
+                    Learn alongside fellow golfers in intimate group settings. Perfect for beginners or those 
+                    targeting specific skills like putting, chipping, or driving technique.
+                </p>
+                <div class="price">$45/person</div>
+                <a href="#contact" class="btn btn-primary">Join Class</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Playing Lessons</h3>
+                <p>
+                    On-course instruction where you learn real-world application. Focus on course management, 
+                    shot selection, and pressure situations during actual play conditions.
+                </p>
+                <div class="price">$150/9 holes</div>
+                <a href="#contact" class="btn btn-primary">Schedule</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Video Analysis</h3>
+                <p>
+                    Advanced high-speed video swing analysis using professional-grade technology. Identify swing 
+                    flaws, track progress, and receive detailed reports with every lesson.
+                </p>
+                <div class="price">Included</div>
+                <a href="#contact" class="btn btn-primary">Details</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Corporate Events</h3>
+                <p>
+                    Custom golf experiences for corporate team building and client entertainment. Professional 
+                    clinics, tournament preparation, and memorable golf outings.
+                </p>
+                <div class="price">Custom</div>
+                <a href="#contact" class="btn btn-primary">Inquire</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="section-header">
+            <p style="color: var(--light-green); font-weight: 600; margin-bottom: 0.5rem;">Training Programs</p>
+            <h2 class="section-title">Specialized Packages</h2>
+            <p class="section-subtitle">
+                Comprehensive training programs designed for serious golfers committed to dramatic improvement 
+                and long-term development.
+            </p>
+        </div>
+
+        <div class="program-card">
+            <div class="program-number">01</div>
+            <h3>Championship Package</h3>
+            <p>
+                Elite 12-week program for competitive golfers preparing for tournament play. Intensive training 
+                covering all aspects of championship golf including mental game, course strategy, and pressure management.
+            </p>
+            <ul class="program-features">
+                <li>24 Private Lessons (2 per week)</li>
+                <li>Unlimited Video Analysis</li>
+                <li>4 Playing Lessons</li>
+                <li>Custom Practice Plans</li>
+                <li>Tournament Strategy Sessions</li>
+                <li>Email & Text Support</li>
+            </ul>
+        </div>
+
+        <div class="program-card">
+            <div class="program-number">02</div>
+            <h3>Game Improvement Series</h3>
+            <p>
+                Structured 8-week program focused on building a repeatable, reliable golf swing. Perfect for 
+                intermediate players ready to break through to the next level of consistency.
+            </p>
+            <ul class="program-features">
+                <li>16 Private Lessons (2 per week)</li>
+                <li>Video Swing Analysis</li>
+                <li>2 Playing Lessons</li>
+                <li>Personalized Drill Library</li>
+                <li>Progress Tracking & Reports</li>
+                <li>Ongoing Support</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="section-header">
+            <p style="color: var(--light-green); font-weight: 600; margin-bottom: 0.5rem;">Client Success</p>
+            <h2 class="section-title">What Students Say</h2>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+                "Rob transformed my game in just 8 weeks. His teaching style is clear, patient, and incredibly 
+                effective. I went from a 25 handicap to breaking 90 consistently. Best investment I've made in 
+                my golf game."
+            </p>
+            <div class="testimonial-author">Michael Chen</div>
+            <div class="testimonial-location">Reno, NV</div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+                "As a junior golfer, I needed someone who could help me compete at the high school level. Rob's 
+                junior program gave me the skills and confidence to make varsity as a freshman. Couldn't recommend 
+                him more highly."
+            </p>
+            <div class="testimonial-author">Sarah Martinez</div>
+            <div class="testimonial-location">Sparks, NV</div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+                "I've taken lessons from several instructors over the years, but Rob's approach is different. 
+                He doesn't just fix your swing—he teaches you why it works. The video analysis sessions are 
+                game-changers."
+            </p>
+            <div class="testimonial-author">David Thompson</div>
+            <div class="testimonial-location">Carson City, NV</div>
+        </div>
+    </section>
+
+    <!-- Service Areas Section -->
+    <section id="areas" class="service-areas">
+        <div class="section-header">
+            <p style="color: var(--light-green); font-weight: 600; margin-bottom: 0.5rem;">Where We Teach</p>
+            <h2 class="section-title">Service Areas</h2>
+            <p class="section-subtitle">
+                Providing professional golf instruction throughout Northern Nevada and the greater 
+                Reno-Sparks metropolitan area.
+            </p>
+        </div>
+
+        <h3 style="color: var(--primary-green); margin-bottom: 1rem; font-size: 1.3rem;">Cities We Serve</h3>
+        <div class="areas-grid">
+            <div class="area-item">Reno</div>
+            <div class="area-item">Sparks</div>
+            <div class="area-item">Carson City</div>
+            <div class="area-item">Incline Village</div>
+            <div class="area-item">Spanish Springs</div>
+            <div class="area-item">Fernley</div>
+            <div class="area-item">Dayton</div>
+            <div class="area-item">Minden</div>
+            <div class="area-item">Gardnerville</div>
+            <div class="area-item">Verdi</div>
+        </div>
+
+        <div class="location-details">
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <h4>Primary Location</h4>
+                    <p>Reno, Nevada</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Service Radius</h4>
+                    <p>50 miles from Reno</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Teaching Facilities</h4>
+                    <p>Multiple Partner Courses & Ranges</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Availability</h4>
+                    <p>7 Days a Week, By Appointment</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Travel Lessons</h4>
+                    <p>Available for On-Site Corporate Events</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <p style="color: var(--light-green); font-weight: 600; margin-bottom: 0.5rem;">Get Started</p>
+            <h2 class="section-title">Book Your Lesson</h2>
+            <p class="section-subtitle">
+                Ready to elevate your golf game? Contact us today to schedule your first lesson and begin 
+                your journey to better golf.
+            </p>
+        </div>
+
+        <form class="contact-form" onsubmit="return handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="level">Experience Level</label>
+                <select id="level" name="level" required>
+                    <option value="">Select your level</option>
+                    <option value="beginner">Beginner (New to Golf)</option>
+                    <option value="intermediate">Intermediate (Some Experience)</option>
+                    <option value="advanced">Advanced (Regular Player)</option>
+                    <option value="competitive">Competitive (Tournament Player)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Goals & Questions</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+            <h3>Head Golf Instructor</h3>
+            <div class="contact-item">
+                <h4>Rob L Rossi</h4>
+                <p>35+ Years Golf Experience</p>
+            </div>
+
+            <div class="contact-item">
+                <h4>Phone</h4>
+                <p><a href="tel:+17754601327">775.460.1327</a></p>
+            </div>
+
+            <div class="contact-item">
+                <h4>Email</h4>
+                <p><a href="/cdn-cgi/l/email-protection#6f340a020e06034f1f1d001b0a0c1b0a0b32">[email protected]</a></p>
+            </div>
+
+            <div class="contact-item">
+                <h4>Hours</h4>
+                <p>By Appointment Only<br>
+                7 Days a Week<br>
+                Flexible Scheduling Available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">ROB'S GOLF LESSONS</div>
+            <p class="footer-subtitle">Professional Golf Instruction | Reno, Nevada</p>
+            <p class="footer-copy">© 2025 Rob's Golf Lessons. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your interest! Rob will contact 
