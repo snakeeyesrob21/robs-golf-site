@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,13 +99,21 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(30, 58, 95, 0.8), rgba(15, 20, 25, 0.9)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231e3a5f" width="1200" height="600"/></svg>');
+            background: linear-gradient(rgba(30, 58, 95, 0.85), rgba(15, 20, 25, 0.9)),
+                        url('images/golf-swing.jpg');
             background-size: cover;
             background-position: center;
             color: var(--text-light);
             padding: 4rem 1.5rem;
             text-align: center;
+        }
+
+        .hero-logo-img {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: brightness(1.1);
         }
 
         .hero-badge {
@@ -250,6 +259,19 @@
             margin-bottom: 2rem;
         }
 
+        .instructor-photo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .instructor-photo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem;
+        }
+
         .instructor-name {
             font-size: 1.8rem;
             color: var(--primary-green);
@@ -314,10 +336,21 @@
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
         }
 
         .service-card h3 {
@@ -564,6 +597,13 @@
             margin: 0 auto;
         }
 
+        .footer-logo-img {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
         .footer-logo {
             font-size: 1.5rem;
             font-weight: bold;
@@ -621,6 +661,14 @@
             .detail-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .hero-logo-img {
+                max-width: 300px;
+            }
+
+            .instructor-photo {
+                max-width: 600px;
+            }
         }
 
         /* Desktop Styles */
@@ -639,6 +687,10 @@
 
             .areas-grid {
                 grid-template-columns: repeat(5, 1fr);
+            }
+
+            .hero-logo-img {
+                max-width: 350px;
             }
         }
     </style>
@@ -665,11 +717,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-badge">
-            <div style="font-size: 0.6rem;">ESTD</div>
-            <div class="large">R</div>
-            <div style="font-size: 0.6rem;">2025</div>
-        </div>
+        <img src="images/logo.gif" alt="Rob's Golf Lessons Logo" class="hero-logo-img">
         <h1>Rob's Golf Lessons</h1>
         <p class="hero-subtitle">Swing Better</p>
         <p class="hero-location">Reno, Nevada & Surrounding Areas</p>
@@ -704,6 +752,10 @@
         <div class="section-header">
             <p style="color: var(--light-green); font-weight: 600; margin-bottom: 0.5rem;">Meet Your Coach</p>
             <h2 class="section-title">Rob L Rossi</h2>
+        </div>
+
+        <div class="instructor-photo-container">
+            <img src="images/rob-with-students.jpg" alt="Rob Rossi with students on the golf course" class="instructor-photo">
         </div>
 
         <div class="about-content">
@@ -757,6 +809,7 @@
 
         <div class="service-grid">
             <div class="service-card">
+                <img src="images/instructor-teaching.jpg" alt="Golf instruction" class="service-icon">
                 <h3>Private Lessons</h3>
                 <p>
                     One-on-one personalized instruction tailored to your specific needs. Includes comprehensive 
@@ -767,6 +820,7 @@
             </div>
 
             <div class="service-card">
+                <img src="images/golf-grip.jpg" alt="Golf grip technique" class="service-icon">
                 <h3>Group Clinics</h3>
                 <p>
                     Learn alongside fellow golfers in intimate group settings. Perfect for beginners or those 
@@ -777,6 +831,7 @@
             </div>
 
             <div class="service-card">
+                <img src="images/golf-swing.jpg" alt="Golf swing" class="service-icon">
                 <h3>Playing Lessons</h3>
                 <p>
                     On-course instruction where you learn real-world application. Focus on course management, 
@@ -787,6 +842,7 @@
             </div>
 
             <div class="service-card">
+                <img src="images/golf-ball-detail.jpg" alt="Video analysis" class="service-icon">
                 <h3>Video Analysis</h3>
                 <p>
                     Advanced high-speed video swing analysis using professional-grade technology. Identify swing 
@@ -797,6 +853,7 @@
             </div>
 
             <div class="service-card">
+                <img src="images/ball-in-hole.jpg" alt="Corporate golf events" class="service-icon">
                 <h3>Corporate Events</h3>
                 <p>
                     Custom golf experiences for corporate team building and client entertainment. Professional 
@@ -1006,7 +1063,7 @@
 
             <div class="contact-item">
                 <h4>Email</h4>
-                <p><a href="/cdn-cgi/l/email-protection#6f340a020e06034f1f1d001b0a0c1b0a0b32">[email protected]</a></p>
+                <p><a href="mailto:robsgolflessonsreno@gmail.com">robsgolflessonsreno@gmail.com</a></p>
             </div>
 
             <div class="contact-item">
@@ -1021,13 +1078,14 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
+            <img src="images/logo.gif" alt="Rob's Golf Lessons Logo" class="footer-logo-img">
             <div class="footer-logo">ROB'S GOLF LESSONS</div>
             <p class="footer-subtitle">Professional Golf Instruction | Reno, Nevada</p>
             <p class="footer-copy">© 2025 Rob's Golf Lessons. All rights reserved.</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function toggleMenu() {
             const nav = document.getElementById('nav');
             nav.classList.toggle('active');
@@ -1056,4 +1114,10 @@
 
         function handleSubmit(event) {
             event.preventDefault();
-            alert('Thank you for your interest! Rob will contact 
+            alert('Thank you for your interest! Rob will contact you shortly to schedule your lesson.');
+            event.target.reset();
+            return false;
+        }
+    </script>
+</body>
+</html>
